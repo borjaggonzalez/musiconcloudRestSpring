@@ -22,14 +22,19 @@ import com.ipartek.formacion.rest.musiconcloud.domain.Cancion;
 import com.ipartek.formacion.rest.musiconcloud.domain.ReponseMensaje;
 import com.ipartek.formacion.rest.musiconcloud.model.CancionesRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @CrossOrigin(origins = "*")
 @RestController
+@Api(value="canciones", description="Crud basico para Canciones")
 public class CancionesController {
 
 	@Autowired
 	CancionesRepository cancionesRepository;
 
 	@RequestMapping(value = { "/cancion/", "/cancion" }, method = RequestMethod.GET)
+	@ApiOperation(value = "Listado de Canciones, soporta busqueda por nombre de cancion")    
 	public ResponseEntity<Object> listar(@RequestParam(required = false) String nombre) {
 
 		ResponseEntity<Object> result = null;

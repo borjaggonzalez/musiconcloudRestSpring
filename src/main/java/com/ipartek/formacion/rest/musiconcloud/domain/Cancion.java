@@ -9,17 +9,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="cancion")
+@ApiModel(value="Cancion", description="ejemplo para documentación")
 public class Cancion {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(notes = "ID generado por la base de datos")
 	int id;
 	
 	@NotBlank
 	@Basic
 	@Column(name="nombre", nullable=false, unique=true)
+	@ApiModelProperty(notes = "Nombre Cancion", required = true)
 	String nombre;
 
 	public Cancion() {

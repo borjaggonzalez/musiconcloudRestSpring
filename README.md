@@ -6,21 +6,21 @@ Proyecto Rest con CrudRepository y documentado con Swagger2
 	- Java 1.8
 	- Swagger2
 	- RestController
-	- CrudRepository
+	- JPA - CrudRepository
 		
 
 ## Endpoint del servicio
 
-http://localhost:8080/cancion
+listado canciones => http://localhost:8080/cancion
 
+Swagger json => http://localhost:8080/v2/api-docs    
 
-## Documnetación Swagger2
-
-
-Swagger json => http://localhost:8080/v2/api-docs
 Swagger UI   => http://localhost:8080/swagger-ui.html
 
 ![Alt text](https://github.com/ipartek/musiconcloudRestSpring/blob/master/screenshot-swagger.png)
 
 			
-			 
+			
+## Documnetación oficial de Swagger2
+
+https://github.com/swagger-api/swagger-core/wiki/annotations			 
