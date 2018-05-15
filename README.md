@@ -20,7 +20,7 @@ http://localhost:8080/cancion
 Swagger json => http://localhost:8080/v2/api-docs
 Swagger UI   => http://localhost:8080/swagger-ui.html
 
-![Alt text](https://github.com/anderuraga/musiconcloudRestSpring/blob/master/screenshot-swagger.png)
+![Alt text](https://github.com/ipartek/musiconcloudRestSpring/blob/master/screenshot-swagger.png)
 
 			
 			 
