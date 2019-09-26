@@ -3,8 +3,7 @@ package com.ipartek.formacion.rest.musiconcloud.controller;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -101,7 +100,7 @@ public class CancionesController {
 	}
 
 	@RequestMapping(value = "/cancion/", method = RequestMethod.POST)
-	public ResponseEntity<Object> insertar(@Valid @RequestBody Cancion cancion) {
+	public ResponseEntity<Object> insertar(@RequestBody Cancion cancion) {
 
 		ResponseEntity<Object> result = null;
 		try {
@@ -121,14 +120,16 @@ public class CancionesController {
 	}
 
 	@RequestMapping(value = "/cancion/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Object> update(@Valid @RequestBody Cancion cancion, @PathVariable int id) {
+	public ResponseEntity<Object> update(@RequestBody Cancion cancion, @PathVariable int id) {
 
 		ResponseEntity<Object> result = null;
 		try {
 			cancion.setId(id);
 			cancionesRepository.save(cancion);
 			result = new ResponseEntity<Object>(cancion, HttpStatus.CREATED);
-
+		}catch (ConstraintViolationException e) {
+			ReponseMensaje responseBody = new  ReponseMensaje("El nombre debe ser de 3 a 50 caracteres");
+			result = new ResponseEntity(responseBody, HttpStatus.BAD_REQUEST);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
